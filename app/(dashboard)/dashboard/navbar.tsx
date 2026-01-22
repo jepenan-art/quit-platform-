@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { logoutUser } from '@/lib/firebase';
 
 export default function Navbar() {
   const router = useRouter();
 
   const handleLogout = async () => {
-    // TODO: Implement actual logout logic
+    logoutUser();
     router.push('/login');
   };
 
