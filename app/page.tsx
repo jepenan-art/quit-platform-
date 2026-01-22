@@ -1,10 +1,7 @@
 export default function HomePage() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome</h1>
-        <p className="text-lg text-gray-600">Get started with Quit Platform</p>
-      </div>
-    </main>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <h1 className="text-3xl font-bold">Tailwind is working!</h1>
+    </div>
   );
 }

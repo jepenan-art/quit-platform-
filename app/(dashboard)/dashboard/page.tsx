@@ -1,27 +1,51 @@
 export default function DashboardPage() {
   return (
-    <section className="space-y-8">
-      <h1 className="text-3xl font-bold">Dashboard</h1>
-      
-      <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-gray-600 text-sm font-medium mb-2">Total Users</h3>
-          <p className="text-3xl font-bold">1,234</p>
-          <p className="text-green-600 text-xs mt-2">+12% from last month</p>
-        </div>
-        
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-gray-600 text-sm font-medium mb-2">Active Sessions</h3>
-          <p className="text-3xl font-bold">567</p>
-          <p className="text-green-600 text-xs mt-2">+8% from last week</p>
-        </div>
-        
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-gray-600 text-sm font-medium mb-2">Completion Rate</h3>
-          <p className="text-3xl font-bold">87%</p>
-          <p className="text-green-600 text-xs mt-2">+3% improvement</p>
+    <main className="min-h-screen p-4 md:p-8 lg:p-12 bg-gray-50">
+      <div className="container mx-auto">
+        <h1 className="text-2xl md:text-3xl font-bold mb-6">{{DASHBOARD_TITLE}}</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="p-4 bg-white rounded shadow">{{STAT_CARD}}</div>
+          <div className="p-4 bg-white rounded shadow">{{STAT_CARD}}</div>
+          <div className="p-4 bg-white rounded shadow">{{STAT_CARD}}</div>
         </div>
       </div>
-    </section>
+    </main>
+  );
+}
+
+import Navbar from './navbar';
+
+export default function DashboardPage() {
+  return (
+    <>
+      <Navbar />
+      <main className="min-h-screen p-4 md:p-8 lg:p-12 bg-gray-50">
+        ...
+      </main>
+    </>
+  );
+}
+import { daysSinceQuit, moneySaved, cigarettesAvoided } from '@/lib/calculations';
+import { useState } from 'react';
+
+export default function DashboardPage() {
+  const [quitDate] = useState(new Date('2026-01-01'));
+  const [cigsPerDay] = useState(10);
+  const [costPerPack] = useState(12);
+
+  const days = daysSinceQuit(quitDate);
+  const money = moneySaved(days, costPerPack);
+  const avoided = cigarettesAvoided(days, cigsPerDay);
+
+  return (
+    <main className="min-h-screen p-4 md:p-8 lg:p-12 bg-gray-50">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 bg-white rounded shadow">Days Quit: {days}</div>
+          <div className="p-4 bg-white rounded shadow">Money Saved: ${money}</div>
+          <div className="p-4 bg-white rounded shadow">Cigarettes Avoided: {avoided}</div>
+        </div>
+      </div>
+    </main>
   );
 }
