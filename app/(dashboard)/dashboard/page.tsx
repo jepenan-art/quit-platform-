@@ -1,3 +1,5 @@
+'use client';
+
 import Navbar from './navbar';
 import { daysSinceQuit, moneySaved, cigarettesAvoided } from '@/lib/calculations';
 import { useState } from 'react';
